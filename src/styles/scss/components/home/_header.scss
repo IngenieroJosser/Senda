@@ -1,0 +1,44 @@
+@import '../../config/variables';
+@import '../../config/mixins';
+
+header {
+    display: flex;
+    padding: 2em 1.9em;
+    background-color: $background-color;
+    @include border-bottom(1px, $black-soft);
+    justify-content: space-between;
+
+    h1 {
+        font-size: 3em;
+    }
+
+    ul {
+        display: flex;
+        gap: 2.8em;
+        margin-top: 1.6em;
+
+        .btn-link {
+            text-decoration: none;
+            color: $black-main;
+            
+            li {
+                list-style: none;
+                font-family: 'Jost-two';
+                font-weight: bold;
+            }
+        }
+    }
+
+    .login-register {
+        margin-top: 1.6em;
+        
+        .btn-link {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+            color: $black-main;
+        }
+    }
+}

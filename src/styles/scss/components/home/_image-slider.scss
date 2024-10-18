@@ -1,0 +1,78 @@
+@import '../../config/variables';
+@import '../../config/mixins';
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1.3em;
+  
+    .slider-images {
+      display: flex;
+      transition: transform 0.5s ease; // Añade transición
+      width: 78%; // Ajusta el ancho según sea necesario
+    }
+  
+    .slide {
+      min-width: 33.33%; // Mostrar 3 imágenes a la vez
+      transition: opacity 0.5s ease; // Añade transición de opacidad
+  
+      img {
+        width: 83%; // Ajusta la imagen al contenedor
+        // border-radius: 8px; // Agrega bordes redondeados, opcional
+        height: 78vh;
+        object-fit: cover;
+      }
+
+      p {
+        width: 100%;
+        align-content: flex-start;
+        margin-top: .7em;
+      }
+
+      h3 {
+        margin-top: .7em;
+      }
+
+      a {
+        margin-top: 1.8em;
+        font-size: 1.2em;
+        text-decoration: none;
+        color: $medium-gray;
+        transition: opacity 0.5s ease;
+
+        &:hover {
+            color: $black-main;
+        }
+      }
+    }
+  
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.7); // Color de fondo de los botones
+      border: none;
+      cursor: pointer;
+      z-index: 1;
+      width: 5em;
+      height: auto;
+      padding: 3em;
+      @include border-radius(50%);
+  
+      &:hover {
+        background-color: rgba(255, 255, 255, 1); // Color de fondo al pasar el mouse
+      }
+  
+      &:first-of-type {
+        left: 30px; // Posición izquierda del botón izquierdo
+      }
+  
+      &:last-of-type {
+        right: 30px; // Posición derecha del botón derecho
+      }
+    }
+  }
+  

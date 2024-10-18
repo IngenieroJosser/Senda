@@ -1,0 +1,39 @@
+@mixin border($width: 1px, $style: solid, $color: black) {
+    border: $width $style $color;
+}
+@mixin border-bottom($width, $color) {
+    border-bottom: $width, solid , $color;
+}
+
+@mixin flex-gap($gap: 1rem) {
+    display: flex;
+    gap: $gap;
+}
+
+@mixin box-shadow($h-offset: 0, $v-offset: 4px, $blur: 6px, $spread: 0, $color: rgba(0, 0, 0, 0.1)) {
+    box-shadow: $h-offset $v-offset $blur $spread $color;
+}
+
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+    transition: $properties $duration $timing;
+}
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
