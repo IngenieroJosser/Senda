@@ -1,9 +1,12 @@
+// src/pages/AuthForm.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../utils/AuthContext'; // Asegúrate de que la ruta sea correcta
 import '../styles/scss/components/log/_auth-form.scss';
 
 const AuthForm = () => {
+  const { login } = useAuth(); // Acceder al método login del contexto
   const navigate = useNavigate();
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
   const [name, setName] = useState('');
@@ -11,7 +14,6 @@ const AuthForm = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [isLoginError, setIsLoginError] = useState(''); // Estado para errores de inicio de sesión
 
   const handleOpenRegisterModal = () => {
     setRegisterModalOpen(true);
@@ -21,7 +23,6 @@ const AuthForm = () => {
     setRegisterModalOpen(false);
     setError('');
     setSuccessMessage('');
-    setIsLoginError(''); // Limpiar el error de inicio de sesión al cerrar el modal
   };
 
   const showMessage = (message, isSuccess) => {
@@ -62,14 +63,15 @@ const AuthForm = () => {
     e.preventDefault();
 
     const user = {
-      email: document.getElementById('login-email').value,
-      password: document.getElementById('login-password').value,
+      email,
+      password,
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/api/login', user); // Cambia la URL según tu ruta de inicio de sesión
+      const response = await axios.post('http://localhost:3000/api/login', user);
       console.log('Usuario iniciado sesión:', response.data);
-      navigate('/products'); // Cambia '/dashboard' a la ruta del componente al que deseas redirigir
+      login(); // Llama al método login del contexto
+      navigate('/products'); // Cambia '/products' a la ruta del componente al que deseas redirigir
       showMessage('Inicio de sesión exitoso!', true); // Mensaje de éxito
     } catch (err) {
       console.error('Error al iniciar sesión:', err.response ? err.response.data : err.message);
@@ -77,29 +79,32 @@ const AuthForm = () => {
     }
   };
 
-  const handleGoHome = () => {
-    navigate('/'); // Cambia la ruta al home
-  };
-
   return (
     <div className="AuthForm">
-      <p onClick={handleGoHome} style={{ cursor: 'pointer' }}>🔙</p>
       <h2>Iniciar sesión</h2>
-      <form onSubmit={handleLoginSubmit}> {/* Manejo de inicio de sesión */}
+      <form onSubmit={handleLoginSubmit}>
         <label htmlFor="login-email">Correo electrónico:</label>
-        <input type="email" id="login-email" required />
+        <input
+          type="email"
+          id="login-email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
         <label htmlFor="login-password">Contraseña:</label>
-        <input type="password" id="login-password" required />
+        <input
+          type="password"
+          id="login-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button type="submit">Iniciar sesión</button>
       </form>
       <a href="#" className="link" onClick={handleOpenRegisterModal}>
         ¿No tienes una cuenta? Regístrate
       </a>
 
-      {/* Mostrar errores de inicio de sesión si los hay */}
-      {isLoginError && <p className="error-message" style={{ color: 'red' }}>{isLoginError}</p>}
-
-      {/* Mostrar errores si los hay */}
       {error && <p className="error-message">{error}</p>}
       {successMessage && <p className="success-message" style={{ color: 'green' }}>{successMessage}</p>} {/* Mensaje de éxito */}
 
@@ -139,7 +144,6 @@ const AuthForm = () => {
               Cerrar
             </button>
 
-            {/* Mostrar mensaje de éxito o error dentro del modal */}
             {successMessage && <p className="success-message" style={{ color: 'green' }}>{successMessage}</p>}
             {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
           </div>

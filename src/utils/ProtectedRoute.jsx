@@ -1,8 +1,12 @@
+// src/components/ProtectedRoute.jsx
 import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from './AuthContext'; // Asegúrate de que la ruta sea correcta
 
-const ProtectedRoute = ({ element, isAuthenticated }) => {
-  return isAuthenticated ? element : <Navigate to="/login" />;
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+
+  return isAuthenticated ? children : <Navigate to="/login" />; // Redirigir a la página de inicio de sesión
 };
 
 export default ProtectedRoute;

@@ -1,79 +1,82 @@
+// src/App.jsx
 import React from 'react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import Home from './pages/Home'; // Componente de la pantalla de inicio
-import Clients from './pages/Clients'; // Componente de gestión de clientes
-import Suppliers from './pages/Suppliers'; // Componente de gestión de proveedores
-import Products from './pages/Products'; // Componente de gestión de productos
-import Sales from './pages/Sales'; // Componente de gestión de ventas
-import Invoices from './pages/Invoices'; // Componente de facturación
-import Inventory from './pages/Inventory'; // Componente de stock/inventario
-import Reports from './pages/Reports'; // Componente de reportes y estadísticas
-import UserManagement from './pages/UserManagement'; // Componente de administración de usuarios
-import Settings from './pages/Settings'; // Componente de configuración
-import AuthForm from './pages/AuthForm'; // Componente de login/registro
+import Home from './pages/Home';
+import Clients from './pages/Clients';
+import Suppliers from './pages/Suppliers';
+import Products from './pages/Products';
+import Sales from './pages/Sales';
+import Invoices from './pages/Invoices';
+import Inventory from './pages/Inventory';
+import Reports from './pages/Reports';
+import UserManagement from './pages/UserManagement';
+import Settings from './pages/Settings';
+import AuthForm from './pages/AuthForm';
 import Error404 from './pages/Error404';
-// Configuración de las rutas
+import ProtectedRoute from './utils/ProtectedRoute'; // Importar ProtectedRoute
+import { AuthProvider } from './utils/AuthContext'; // Importar AuthProvider
+
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to="/home" />, // Redirigir a la pantalla de inicio
+    element: <Navigate to="/home" />,
   },
   {
     path: '/home',
-    element: <Home />, // Componente de inicio
+    element: <Home />,
   },
   {
     path: '/clients',
-    element: <Clients />, // Componente de gestión de clientes
+    element: <ProtectedRoute><Clients /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/suppliers',
-    element: <Suppliers />, // Componente de gestión de proveedores
+    element: <ProtectedRoute><Suppliers /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/products',
-    element: <Products />, // Componente de gestión de productos
+    element: <ProtectedRoute><Products /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/sales',
-    element: <Sales />, // Componente de gestión de ventas
+    element: <ProtectedRoute><Sales /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/invoices',
-    element: <Invoices />, // Componente de facturación
+    element: <ProtectedRoute><Invoices /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/inventory',
-    element: <Inventory />, // Componente de stock/inventario
+    element: <ProtectedRoute><Inventory /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/reports',
-    element: <Reports />, // Componente de reportes
+    element: <ProtectedRoute><Reports /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/user-management',
-    element: <UserManagement />, // Componente de administración de usuarios
+    element: <ProtectedRoute><UserManagement /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/settings',
-    element: <Settings />, // Componente de configuración
+    element: <ProtectedRoute><Settings /></ProtectedRoute>, // Proteger la ruta
   },
   {
     path: '/login',
-    element: <AuthForm />, // Componente de login/registro
+    element: <AuthForm />,
   },
   {
     path: '*',
-    element: <Error404 />, // Componente de error 404
+    element: <Error404 />,
   },
-  // Otras rutas...
 ]);
 
-// Componente principal de la aplicación
-function App() {
+const App = () => {
   return (
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   );
-}
+};
 
 export default App;
