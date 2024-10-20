@@ -1,0 +1,36 @@
+@import '../../config/mixins';
+
+footer {
+    @include flex-gap(5em);
+    padding: 2em 1em;
+    display: flex;
+    justify-content: space-around;
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .flex-footer {
+        @include flex-gap(1em);
+
+        .icons-social {
+            @include flex-gap(1em);
+    
+            a {
+                img{
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    .flex-footer-payment {
+        @include flex-gap(1em);
+
+        img {
+            width: 24px;
+            height: 24px;
+            object-fit: cover;
+        }
+    }
+}

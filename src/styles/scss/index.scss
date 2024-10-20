@@ -1,7 +1,14 @@
+// SETTINGS
 @import './config/variables'; 
 @import './config/base';
 @import './config/mixins';
 
+// HOME
 @import './components/home/header';
 @import './components/home/banner-presentation';
 @import './components/home/advertisement';
+@import './components/home/banner-motivation-buy';
+@import './components/home/footer';
+
+// LOGIN / REGISTER
+@import './components/log/auth-form';

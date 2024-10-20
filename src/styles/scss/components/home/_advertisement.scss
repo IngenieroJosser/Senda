@@ -7,8 +7,9 @@
     padding-left: 4em;
     
     img {
-        height: 50vh;
-        object-fit: cover;
+        width: 50vw;
+        height: 70vh;
+        object-fit: contain;
     }
     
     .content-ad {
@@ -30,5 +31,4 @@
             padding-top: 1em;
         }
     }
-
 }

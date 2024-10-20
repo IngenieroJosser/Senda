@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *, *::after, *::before {
   margin: 0;
   padding: 0;
@@ -6,36 +7,392 @@
 
 @font-face {
   font-family: "Jost";
-  src: url("../../../assets/fonts/Jost-VariableFont_wght.ttf");
+  src: url("src/assets/fonts/Jost-VariableFont_wght.ttf") format("woff2"), url("src/assets/fonts/Jost-VariableFont_wght.ttf") format("woff"), url("src/assets/fonts/Jost-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Jost-two";
+  src: url("src/assets/fonts/Jost-ThinItalic.ttf") format("woff2"), url("src/assets/fonts/Jost-ThinItalic.ttf") format("woff"), url("src/assets/fonts/Jost-ThinItalic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 body {
-  background-color: #F7F4E9;
-  font-family: "Jost";
+  background-color: #f2f2f2;
 }
 
 h1, h2, h3, h4, h5, h6, span, p, a, li, button, label, input, textarea, strong {
   font-family: "Jost";
 }
 
-/* cyrillic */
-@font-face {
-  font-family: "Jost";
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/jost/v18/92zUtBhPNqw73oHt5D4hTxM.woff2) format("woff2");
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+::selection {
+  background-color: #4D4D4D;
+  color: #FFF;
 }
+
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
 header {
   display: flex;
   padding: 2em 1.9em;
-  background-color: #F7F4E9;
+  background-color: #f2f2f2;
+  border-bottom: 1px, solid, #1A1A1A;
+  justify-content: space-between;
+}
+header h1 {
+  font-size: 3em;
 }
 header ul {
   display: flex;
+  gap: 2.8em;
+  margin-top: 1.6em;
 }
-header ul li {
+header ul .btn-link {
+  text-decoration: none;
+  color: #000000;
+}
+header ul .btn-link li {
   list-style: none;
+  font-family: "Jost-two";
+  font-weight: bold;
+}
+header .login-register {
+  margin-top: 1.6em;
+}
+header .login-register .btn-link {
+  text-decoration: none;
+}
+header .login-register li {
+  list-style: none;
+  color: #000000;
+}
+
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
+.banner-presentation h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 1.7em;
+}
+.banner-presentation p {
+  padding: 0px 4em;
+  width: 55%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
+.advertisement-flex {
+  margin-top: 9.7em;
+  display: flex;
+  gap: 0px;
+  padding-left: 4em;
+}
+.advertisement-flex img {
+  width: 50vw;
+  height: 70vh;
+  object-fit: contain;
+}
+.advertisement-flex .content-ad {
+  background-color: #1A1A1A;
+  padding-left: 4em;
+  margin-top: 2em;
+  padding-bottom: 2em;
+}
+.advertisement-flex .content-ad h2 {
+  font-family: "Jost";
+  font-size: 2.5em;
+  color: #FFF;
+  padding-top: 1em;
+}
+.advertisement-flex .content-ad p {
+  width: 60%;
+  color: #FFF;
+  padding-top: 1em;
+}
+
+.banner-motivation {
+  padding: 3rem 0;
+  background-color: #f8f9fa;
+}
+.banner-motivation .section-header {
+  margin-bottom: 2rem;
+}
+.banner-motivation .section-header .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #343a40;
+  text-transform: uppercase;
+}
+.banner-motivation .swiper-container {
+  width: 100%;
+  padding: 2rem 0;
+}
+.banner-motivation .swiper-container .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner-motivation .swiper-container .swiper-slide .testimonial-item {
+  max-width: 500px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 2rem;
+  cursor: grab;
+}
+.banner-motivation .swiper-container .swiper-slide .testimonial-item:hover {
+  cursor: grabbing;
+}
+.banner-motivation .swiper-container .swiper-slide .testimonial-item blockquote {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.banner-motivation .swiper-container .swiper-slide .testimonial-item blockquote p {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+}
+.banner-motivation .swiper-container .swiper-slide .testimonial-item blockquote .review-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+.banner-motivation .testimonial-swiper-pagination .swiper-pagination-bullet {
+  background-color: #007bff;
+  margin: 0 8px;
+  width: 12px;
+  height: 12px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.banner-motivation .testimonial-swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
+footer {
+  display: flex;
+  gap: 5em;
+  padding: 2em 1em;
+  display: flex;
+  justify-content: space-around;
+}
+footer h2 {
+  font-size: 2em;
+}
+footer .flex-footer {
+  display: flex;
+  gap: 1em;
+}
+footer .flex-footer .icons-social {
+  display: flex;
+  gap: 1em;
+}
+footer .flex-footer .icons-social a img {
+  object-fit: cover;
+}
+footer .flex-footer-payment {
+  display: flex;
+  gap: 1em;
+}
+footer .flex-footer-payment img {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
+.AuthForm {
+  display: flex;
+  flex-direction: column;
+  padding: 100px 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 5% auto;
+  /* Estilos del modal */
+}
+.AuthForm h2 {
+  margin-bottom: 20px;
+}
+.AuthForm form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.AuthForm form label {
+  margin-bottom: 5px;
+}
+.AuthForm form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.AuthForm form button {
+  background-color: #B3B3B3;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.AuthForm form button:hover {
+  background-color: #000000;
+}
+.AuthForm .link {
+  text-align: center;
+  margin-top: 10px;
+  color: #666;
+  text-decoration: none;
+  border: 1px #000000 black;
+}
+.AuthForm .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.AuthForm .modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 29.5%;
+  padding: 100px 40px;
+}
+.AuthForm .modal-content h2 {
+  margin-bottom: 15px;
+}
+.AuthForm .modal-content label {
+  margin-bottom: 5px;
+}
+.AuthForm .modal-content input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.AuthForm .modal-content button {
+  background-color: #B3B3B3;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.AuthForm .modal-content button:hover {
+  background-color: #000000;
+}
+.AuthForm .modal-content .close-button {
+  background-color: transparent;
+  color: #666;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.success-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
+}
+
+/* Media queries (opcional) */
+@media (min-width: 768px) {
+  .AuthForm {
+    width: 400px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

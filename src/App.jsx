@@ -10,7 +10,7 @@ import Inventory from './pages/Inventory'; // Componente de stock/inventario
 import Reports from './pages/Reports'; // Componente de reportes y estadísticas
 import UserManagement from './pages/UserManagement'; // Componente de administración de usuarios
 import Settings from './pages/Settings'; // Componente de configuración
-import Login from './pages/Login'; // Componente de login/registro
+import AuthForm from './pages/AuthForm'; // Componente de login/registro
 import Error404 from './pages/Error404';
 
 // Configuración de las rutas
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <Login />, // Componente de login/registro
+    element: <AuthForm />, // Componente de login/registro
   },
   {
     path: '*',
