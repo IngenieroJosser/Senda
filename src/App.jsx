@@ -12,7 +12,6 @@ import UserManagement from './pages/UserManagement'; // Componente de administra
 import Settings from './pages/Settings'; // Componente de configuración
 import AuthForm from './pages/AuthForm'; // Componente de login/registro
 import Error404 from './pages/Error404';
-
 // Configuración de las rutas
 const router = createBrowserRouter([
   {

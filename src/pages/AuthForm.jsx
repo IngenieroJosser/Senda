@@ -24,6 +24,18 @@ const AuthForm = () => {
     setIsLoginError(''); // Limpiar el error de inicio de sesión al cerrar el modal
   };
 
+  const showMessage = (message, isSuccess) => {
+    if (isSuccess) {
+      setSuccessMessage(message);
+    } else {
+      setError(message);
+    }
+    setTimeout(() => {
+      setSuccessMessage('');
+      setError('');
+    }, 3000); // Mensaje visible por 3 segundos
+  };
+
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
@@ -36,15 +48,13 @@ const AuthForm = () => {
     try {
       const response = await axios.post('http://localhost:3000/api/register-users', user);
       console.log('Usuario registrado:', response.data);
-      setSuccessMessage('Registro exitoso!');
-      setTimeout(handleCloseRegisterModal, 2000);
+      showMessage('Registro exitoso!', true);
       setName('');
       setEmail('');
       setPassword('');
     } catch (err) {
       console.error('Error al registrar al usuario:', err.response ? err.response.data : err.message);
-      setError('Registro fallido, intenta nuevamente'); // Mensaje de error
-      setTimeout(handleCloseRegisterModal, 2000); // Cerrar el modal después de 2 segundos
+      showMessage('Registro fallido, intenta nuevamente', false); // Mensaje de error
     }
   };
 
@@ -60,9 +70,10 @@ const AuthForm = () => {
       const response = await axios.post('http://localhost:3000/api/login', user); // Cambia la URL según tu ruta de inicio de sesión
       console.log('Usuario iniciado sesión:', response.data);
       navigate('/products'); // Cambia '/dashboard' a la ruta del componente al que deseas redirigir
+      showMessage('Inicio de sesión exitoso!', true); // Mensaje de éxito
     } catch (err) {
       console.error('Error al iniciar sesión:', err.response ? err.response.data : err.message);
-      setIsLoginError('Credenciales incorrectas. Intenta nuevamente.'); // Mensaje de error de inicio de sesión
+      showMessage('Credenciales incorrectas. Intenta nuevamente.', false); // Mensaje de error de inicio de sesión
     }
   };
 
@@ -90,6 +101,7 @@ const AuthForm = () => {
 
       {/* Mostrar errores si los hay */}
       {error && <p className="error-message">{error}</p>}
+      {successMessage && <p className="success-message" style={{ color: 'green' }}>{successMessage}</p>} {/* Mensaje de éxito */}
 
       {/* Modal de Registro */}
       {isRegisterModalOpen && (
@@ -127,7 +139,7 @@ const AuthForm = () => {
               Cerrar
             </button>
 
-            {/* Mostrar mensaje de éxito o error */}
+            {/* Mostrar mensaje de éxito o error dentro del modal */}
             {successMessage && <p className="success-message" style={{ color: 'green' }}>{successMessage}</p>}
             {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
           </div>
