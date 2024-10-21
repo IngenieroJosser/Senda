@@ -394,5 +394,36 @@ footer .flex-footer-payment img {
     width: 400px;
   }
 }
+/*
+.card {
+    @include box-shadow(0, 4px, 12px, 0, rgba(0, 0, 0, 0.2)); // Sombra personalizada
+}
+*/
+/*
+.button {
+    @include transition(); // Transición por defecto
+}
+
+.card {
+    @include transition(background-color, 0.5s, ease-in-out); // Transición personalizada
+}
+*/
+.options-header {
+  display: flex;
+  gap: 1.3em;
+  justify-content: center;
+  margin-top: 2em;
+}
+.options-header button {
+  background-color: #4D4D4D;
+  color: #FFF;
+  border: none;
+  padding: 1em 1.7em;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.options-header button:hover {
+  background-color: #1A1A1A;
+}
 
 /*# sourceMappingURL=index.css.map */

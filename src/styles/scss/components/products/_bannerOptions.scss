@@ -1,0 +1,21 @@
+@import '../../config/mixins';
+@import '../../config/variables';
+
+.options-header {
+    @include flex-gap(1.3em);
+    justify-content: center;
+    margin-top: 2em;
+
+    button {
+        background-color: $medium-gray;
+        color: #FFF;
+        border: none;
+        padding: 1em 1.7em;
+        cursor: pointer;
+        @include border-radius(4px);
+
+        &:hover {
+            background-color: $black-soft;
+        }
+    }
+}

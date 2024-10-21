@@ -1,8 +1,10 @@
-import React from 'react'
+import BannerOptions from "../components/products/BannerOptions"
 
 const Products = () => {
   return (
-    <div>Products</div>
+    <>
+      <BannerOptions />
+    </>
   )
 }
 
