@@ -1,4 +1,3 @@
-// src/pages/AuthForm.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -15,16 +14,19 @@ const AuthForm = () => {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
+  // Función para abrir el modal de registro
   const handleOpenRegisterModal = () => {
     setRegisterModalOpen(true);
   };
 
+  // Función para cerrar el modal de registro
   const handleCloseRegisterModal = () => {
     setRegisterModalOpen(false);
     setError('');
     setSuccessMessage('');
   };
 
+  // Mostrar mensajes de éxito o error
   const showMessage = (message, isSuccess) => {
     if (isSuccess) {
       setSuccessMessage(message);
@@ -37,6 +39,7 @@ const AuthForm = () => {
     }, 3000); // Mensaje visible por 3 segundos
   };
 
+  // Registro de usuarios
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
@@ -59,6 +62,7 @@ const AuthForm = () => {
     }
   };
 
+  // Inicio de sesión de usuarios
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
@@ -69,10 +73,10 @@ const AuthForm = () => {
 
     try {
       const response = await axios.post('http://localhost:3000/api/login', user);
-      console.log('Usuario iniciado sesión:', response.data);
-      login(); // Llama al método login del contexto
-      navigate('/products'); // Cambia '/products' a la ruta del componente al que deseas redirigir
+      console.log('Usuario inició sesión:', response.data);
       showMessage('Inicio de sesión exitoso!', true); // Mensaje de éxito
+      login(); // Llama al método login del contexto
+      navigate('/products'); // Cambia '/products' a la ruta deseada
     } catch (err) {
       console.error('Error al iniciar sesión:', err.response ? err.response.data : err.message);
       showMessage('Credenciales incorrectas. Intenta nuevamente.', false); // Mensaje de error de inicio de sesión
@@ -106,14 +110,14 @@ const AuthForm = () => {
       </a>
 
       {error && <p className="error-message">{error}</p>}
-      {successMessage && <p className="success-message" style={{ color: 'green' }}>{successMessage}</p>} {/* Mensaje de éxito */}
+      {successMessage && <p className="success-message" style={{ color: 'green' }}>{successMessage}</p>}
 
       {/* Modal de Registro */}
       {isRegisterModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>Regístrate</h2>
-            <form className='modal-register' onSubmit={handleRegisterSubmit}>
+            <form className="modal-register" onSubmit={handleRegisterSubmit}>
               <label htmlFor="register-name">Nombre:</label>
               <input
                 type="text"

@@ -10,7 +10,9 @@ const UserModel = {
 
     findUserByEmail: async (email) => {
         const query = 'SELECT * FROM users WHERE email = ?';
-        return db.promise().query(query, [email]);
+        const [rows] = await db.promise().query(query, [email]); // Obtener solo las filas
+        console.log('Usuario encontrado:', rows);
+        return rows; // Devuelve las filas directamente
     },
 
     // Agregar más métodos según sea necesario
