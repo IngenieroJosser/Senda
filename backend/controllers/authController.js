@@ -7,6 +7,7 @@ const authController = {
     registerUser: async (req, res) => {
         const { name, email, password } = req.body;
 
+        // Validación de campos requeridos
         if (!name || !email || !password) {
             return res.status(400).json({ error: 'Todos los campos son requeridos.' });
         }
@@ -19,7 +20,7 @@ const authController = {
 
         try {
             // Buscar si el usuario ya existe por su correo electrónico
-            const [existingUser] = await UserModel.findUserByEmail(email);
+            const existingUser = await UserModel.findUserByEmail(email);
             if (existingUser.length > 0) {
                 return res.status(409).json({ error: 'El correo electrónico ya está en uso.' });
             }

@@ -88,6 +88,13 @@ header .login-register {
 header .login-register .btn-link {
   text-decoration: none;
 }
+header .login-register .log-out {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+header .login-register .log-out:hover {
+  color: #D80000;
+}
 header .login-register li {
   list-style: none;
   color: #000000;

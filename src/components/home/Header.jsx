@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <header>
-        <h1>Senda</h1>
+        <h1>Senda S.A.S</h1>
 
         <nav>
             <ul>
