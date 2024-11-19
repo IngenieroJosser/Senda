@@ -15,7 +15,7 @@ const authController = {
         // Validación de formato de correo electrónico
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            return res.status(400).json({ error: 'El formato del correo electrónico es inválido.' });
+            return res.status(400).json({ error: 'El formato del correo electrónico es inválido.' }); 
         }
 
         try {

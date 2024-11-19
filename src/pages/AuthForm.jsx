@@ -61,27 +61,29 @@ const AuthForm = () => {
       showMessage('Registro fallido, intenta nuevamente', false); // Mensaje de error
     }
   };
+  
 
   // Inicio de sesión de usuarios
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
     const user = {
-      email,
-      password,
+        email,
+        password,
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/api/login', user);
-      console.log('Usuario inició sesión:', response.data);
-      showMessage('Inicio de sesión exitoso!', true); // Mensaje de éxito
-      login(); // Llama al método login del contexto
-      navigate('/products'); // Cambia '/products' a la ruta deseada
+        const response = await axios.post('http://localhost:3000/api/login', user);
+        console.log('Usuario inició sesión:', response.data);
+        showMessage('Inicio de sesión exitoso!', true); // Mensaje de éxito
+        login(response.data); // Pasa los datos del usuario al contexto
+        console.log('Redirigiendo a /products');
+        navigate('/products'); // Cambia '/products' a la ruta deseada
     } catch (err) {
-      console.error('Error al iniciar sesión:', err.response ? err.response.data : err.message);
-      showMessage('Credenciales incorrectas. Intenta nuevamente.', false); // Mensaje de error de inicio de sesión
+        console.error('Error al iniciar sesión:', err.response ? err.response.data : err.message);
+        showMessage('Credenciales incorrectas. Intenta nuevamente.', false); // Mensaje de error de inicio de sesión
     }
-  };
+};
 
   return (
     <div className="AuthForm">

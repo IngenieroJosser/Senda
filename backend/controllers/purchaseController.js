@@ -1,31 +1,30 @@
-// routes/purchases.js
-const express = require('express');
-const router = express.Router();
-const db = require('../config/db'); // Importa tu configuración de conexión a la base de datos
-const e = require('express');
+const purchaseModel = require('../models/purchaseModel'); // Asegúrate de que la ruta sea correcta
 
 const purchaseController = {
     createPurchase: async (req, res) => {
-        const { user_id, product_name, product_price } = req.body;
-    
-        // Asegúrate de validar los datos
-        if (!user_id || !product_name || !product_price) {
-            return res.status(400).json({ message: 'Todos los campos son requeridos.' });
-        }
-    
         try {
-            const query = 'INSERT INTO purchases (user_id, product_name, product_price) VALUES (?, ?, ?)';
-            const values = [user_id, product_name, product_price];
-    
-            // Ejecuta la consulta
-            await db.execute(query, values);
-    
-            return res.status(201).json({ message: 'Compra realizada con éxito.' });
+            const purchaseData = req.body; // Obtener datos de la compra
+            console.log('Datos de la compra:', purchaseData); // Esto debería mostrar los datos recibidos
+
+            // Aquí se asume que `purchaseData` tiene la estructura adecuada
+            if (!purchaseData.user_id) {
+                return res.status(400).json({ message: 'user_id es requerido' });
+            }
+
+            const result = await purchaseModel.create(purchaseData);
+
+            res.status(201).json({
+                message: 'Compra creada exitosamente',
+                data: {
+                    id: result.insertId,
+                    ...purchaseData,
+                },
+            });
         } catch (error) {
-            console.error(error);
-            return res.status(500).json({ message: 'Error al realizar la compra.' });
+            console.error('Error al crear la compra:', error);
+            res.status(500).json({ message: 'Error al crear la compra', error: error.message });
         }
     },
-}
+};
 
 module.exports = purchaseController;

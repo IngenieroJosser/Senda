@@ -1,9 +1,9 @@
-import t_shirt from '../../../assets/img/t-shirt.jpg'; // Asegúrate de que las rutas sean correctas
-import t_shirt_red from '../../../assets/img/t-shirt.jpg';
-import hoodie from '../../../assets/img/t-shirt.jpg';
-import jeans from '../../../assets/img/t-shirt.jpg';
-import dress from '../../../assets/img/t-shirt.jpg';
-import cap from '../../../assets/img/t-shirt.jpg';
+import t_shirt from '../../../assets/img/White T-shirts.webp'; // Asegúrate de que las rutas sean correctas
+import t_shirt_red from '../../../assets/img/Red-T-shirts.jpg';
+import hoodie from '../../../assets/img/Gray-hoodie.jpg';
+import jeans from '../../../assets/img/Classic-Blue-Jeans.jpg';
+import dress from '../../../assets/img/Summer-Floral-Dress.jpg';
+import cap from '../../../assets/img/baseball-cap-black.jpg';
 import jacket from '../../../assets/img/t-shirt.jpg';
 import shorts from '../../../assets/img/t-shirt.jpg';
 import sneakers from '../../../assets/img/t-shirt.jpg';

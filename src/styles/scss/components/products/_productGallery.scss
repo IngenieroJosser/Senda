@@ -40,6 +40,7 @@
             color: #6a807a; /* Color de las estrellas */
             font-size: 18px;
             margin-bottom: 5px;
+            width: 20%;
         }
     
         h5 {
@@ -66,19 +67,19 @@
     flex-direction: column; // Alinear elementos en columna
     align-items: center; // Centrar horizontalmente
     justify-content: center;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 11px;
     position: relative;
     max-width: 500px;
-    width: 87%;
+    width: 100%;
 
     .name_product-modal {
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 
     img {
-        max-width: 50%;
+        max-width: 35%;
         height: auto;
         margin-bottom: 15px;
         border-radius: 11px;
@@ -134,7 +135,6 @@
     .additional-info {
         margin-top: 20px;
         text-align: left;
-        
 
         h4 {
             margin-bottom: 5px;
@@ -172,7 +172,6 @@
     }
 }
 
-
 .cart-modal-overlay {
     position: fixed;
     top: 20px; // Un poco más abajo para no solaparse con otros elementos
@@ -196,6 +195,46 @@
             height: auto;
             margin-top: 10px;
             border-radius: 5px;
+        }
+    }
+}
+
+.purchase-success-modal {
+    position: fixed;
+    top: 0;
+    right: 20px; // Coloca el modal en la esquina superior derecha
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    z-index: 1000; // Asegúrate de que el modal esté por encima de otros elementos
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .purchase-success-content {
+        text-align: center;
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #28a745; // Color del texto de éxito
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        h5 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
         }
     }
 }
