@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes'); // Aqui estan todos los endpoints
 const purchaseRoutes = require('./routes/purchaseRoutes');
+const apiRoutes = require('./routes/api')
 require('dotenv').config();
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 // Rutas de la API
 app.use('/api', authRoutes);
 app.use('/api', purchaseRoutes);
+app.use('/api', apiRoutes); // Middlewares
 
 // Middleware para manejar errores
 app.use((err, req, res, next) => {

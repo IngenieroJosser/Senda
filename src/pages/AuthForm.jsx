@@ -67,13 +67,13 @@ const AuthForm = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    const user = {
-        email,
-        password,
+    const userLogin = {
+      email,
+      password,
     };
 
     try {
-        const response = await axios.post('http://localhost:3000/api/login', user);
+        const response = await axios.post('http://localhost:3000/api/login', userLogin);
         console.log('Usuario inició sesión:', response.data);
         showMessage('Inicio de sesión exitoso!', true); // Mensaje de éxito
         login(response.data); // Pasa los datos del usuario al contexto
@@ -83,7 +83,7 @@ const AuthForm = () => {
         console.error('Error al iniciar sesión:', err.response ? err.response.data : err.message);
         showMessage('Credenciales incorrectas. Intenta nuevamente.', false); // Mensaje de error de inicio de sesión
     }
-};
+  };
 
   return (
     <div className="AuthForm">
